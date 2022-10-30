@@ -68,10 +68,16 @@ router.get('/', async (req, res, next) => {
                 res.status(404).send("It is not possible to find that name")
 
         } else {
+            // todosLosPokemons.sort((a, b) => {
+            //     return a.name.toLowerCase() > b.name.toLowerCase()? 1 : -1
+            // }) //ordenamiento de la a a la z
+            //  todosLosPokemons.sort((a, b) => {
+            //          return a.name.toLowerCase() < b.name.toLowerCase()? 1 : -1
+            //      })//ordenamiento de z a la a
             res.status(200).json(todosLosPokemons);
         }
     } catch (error) {
-        res.status(404).send("GET_ALL_POKEMONS failed" + error.message);
+        res.status(404).send("GET_ALL_POKEMONS_FAILED: " + error.message);
     }
 });
 
