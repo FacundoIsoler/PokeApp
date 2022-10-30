@@ -8,35 +8,35 @@ let {
 
 
 
-    const getApiInfo = async () => {
-        try {
-          const {results} = (
+const getApiInfo = async () => {
+    try {
+        const { results } = (
             await axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=40")
-          ).data;
-          const promisesArray = await Promise.all(
+        ).data;
+        const promisesArray = await Promise.all(
             results.map((p) => axios.get(p.url))
-          );
-      
-          return promisesArray.map(({data}) => {
+        );
+
+        return promisesArray.map(({ data }) => {
             return {
-              id: data.id,
-              name: data.name.charAt(0).toUpperCase() + data.name.substring(1),
-              life: data.stats[0].base_stat,
-              attack: data.stats[1].base_stat,
-              defense: data.stats[2].base_stat,
-              speed: data.stats[5].base_stat,
-              height: data.height,
-              weight: data.weight,
-              types: data.types.map((type) => { return type.type.name.charAt(0).toUpperCase() + type.type.name.substring(1) }),
-              sprites:
-                data.sprites.other["dream_world"].front_default ||
-                data.sprites.other["official-artwork"].front_default,
+                id: data.id,
+                name: data.name.charAt(0).toUpperCase() + data.name.substring(1),
+                life: data.stats[0].base_stat,
+                attack: data.stats[1].base_stat,
+                defense: data.stats[2].base_stat,
+                speed: data.stats[5].base_stat,
+                height: data.height,
+                weight: data.weight,
+                types: data.types.map((type) => { return type.type.name.charAt(0).toUpperCase() + type.type.name.substring(1) }),
+                sprites:
+                    data.sprites.other["dream_world"].front_default ||
+                    data.sprites.other["official-artwork"].front_default,
             };
-          });
-        } catch (e) {
-          return e;
-        }
-      };
+        });
+    } catch (e) {
+        return e;
+    }
+};
 
 const getDbInfo = async () => {
     return await Pokemon.findAll({
@@ -77,45 +77,76 @@ router.get('/', async (req, res, next) => {
 
 
 
-// router.get('/:idPokemon', async (req, res) => {
-//     const { idPokemon } = req.params;
-//     try {
-//         if (idPokemon === "String") {
-//             const dataDB = await Pokemon.findByPk(idPokemon, { include: Type });
-//             if (dataDB) {
-//                 res.status(200).json(dataDB);
-//                 return;
-//             }
+router.get('/:idPokemon', async (req, res) => {
+    const { idPokemon } = req.params;
+     console.log(typeof idPokemon)
+    try {
+        console.log("estamos en el try")
+        if(isNaN(Number(idPokemon))) {
+            console.log("entró al if")
+            const dataDB = await Pokemon.findByPk(idPokemon, { include: Type });
+            if (dataDB) {
+                res.status(200).json(dataDB);
+                console.log(dataDB);
+                return;
+            }
+        }else{
+            console.log("entró al else")
+            const {data} = await axios(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`)
+            console.log(data)
+                const pokemonFinal = {
+                    id: data.id,
+                    name: data.name.charAt(0).toUpperCase() + data.name.substring(1),
+                     life: data.stats[0].base_stat,
+                     attack: data.stats[1].base_stat,
+                     defense: data.stats[2].base_stat,
+                     speed: data.stats[5].base_stat,
+                     height: data.height,
+                     weight: data.weight,
+                     types: data.types.map((type) => { return type.type.name.charAt(0).toUpperCase() + type.type.name.substring(1) }),
+                     sprites:
+                         data.sprites.other["dream_world"].front_default ||
+                         data.sprites.other["official-artwork"].front_default,
+                };
+                console.log("entraste a la data")
+            res.status(200).send(pokemonFinal);
+        }
+        
+    }
+    catch (err) {
+        res.status(404).send(err)
+    }
+});
 //         } else {
 
 //             const result = await axios(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`);
-//             const apiInfo = await result.data.map(el=> {
-//                 return{
+//             const apiInfo = await result.data.map(el => {
+//                 return {
 //                     id: el.id,
 //                     name: el.name,
 //                     altura: el.height,
-//                     stats: el.stats.map(el=>{
-//                         return{
+//                     stats: el.stats.map(el => {
+//                         return {
 
 //                         }
-//                     }
-//                 }
-
-
 //                     })
-
 //                 }
 
-//             // console.log(result);
-//             res.status(200).json(apiInfo);
-//         };
-//     }
+
+//             })
+
+//         }
+
+//         // console.log(result);
+//         res.status(200).json(apiInfo);
+// //     };
+// // }
 
 //     catch (error) {
-//         // console.log(error)
-//         res.status(404).json("estas adentro")
-//     }
-// })
+//             // console.log(error)
+//             res.status(404).json("estas adentro")
+//         }
+//     })
 
 
 
