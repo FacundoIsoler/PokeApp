@@ -68,6 +68,7 @@ router.get('/', async (req, res, next) => {
                 res.status(404).send("It is not possible to find that name")
 
         } else {
+            
             // todosLosPokemons.sort((a, b) => {
             //     return a.name.toLowerCase() > b.name.toLowerCase()? 1 : -1
             // }) //ordenamiento de la a a la z
@@ -123,47 +124,24 @@ router.get('/:idPokemon', async (req, res) => {
         res.status(404).send(err)
     }
 });
-//         } else {
 
-//             const result = await axios(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`);
-//             const apiInfo = await result.data.map(el => {
-//                 return {
-//                     id: el.id,
-//                     name: el.name,
-//                     altura: el.height,
-//                     stats: el.stats.map(el => {
-//                         return {
-
-//                         }
-//                     })
-//                 }
-
-
-//             })
-
-//         }
-
-//         // console.log(result);
-//         res.status(200).json(apiInfo);
-// //     };
-// // }
-
-//     catch (error) {
-//             // console.log(error)
-//             res.status(404).json("estas adentro")
-//         }
-//     })
-
-
-
-//[ ] GET /pokemons?name="...":
 
 
 router.post('/', async (req, res, next) => {
     try {
-        const { name, vida, ataque, defensa, velocidad, altura, peso } = req.body
-        const newPokemon = await Pokemon.create({ name, vida, ataque, defensa, velocidad, altura, peso })
-        return res.status(200).json({msg: 'Pokemon created successfully', newPokemon})
+        let  { name, vida, ataque, defensa, velocidad, altura, peso, type } = req.body
+        let  newPokemon = await Pokemon.create({ name, vida, ataque, defensa, velocidad, altura, peso })
+        
+        // let typeDb = await Type.findAll({
+        //     where: {name: type}
+        // })
+        // newPokemon.addType(typeDb)
+
+        const addTypes = await newPokemon.addType(type, {
+            through: null,
+          });
+
+        res.status(200).json({msg: 'Pokemon created successfully', newPokemon})
     } catch (error) {
         next(error)
     }

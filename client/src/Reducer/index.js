@@ -1,10 +1,10 @@
 const initialState = {
-    pokemons : [],
+    pokemons : ["hardcodeo"],
 }
 
 
 
-function rootReducer (state= initialState, action) {
+export default function rootReducer (state= initialState, action) {
     switch (action.type){
         case 'GET_POKEMONS':
             return {
@@ -16,6 +16,3 @@ function rootReducer (state= initialState, action) {
     }
 };
 
-
-
-export default rootReducer;
