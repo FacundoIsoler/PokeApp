@@ -5,10 +5,20 @@ import { getPokemons } from '../Actions/index.js';
 import { Link } from 'react-router-dom';
 
 import Card from './Card.jsx'
+import Paginado from './Paginado.jsx';
 
 export default function Home() {
     const dispatch = useDispatch()
     const allPokemons = useSelector((state) => state.pokemons)
+    const [currentPage, setCurrentPage] = useState(1)
+    const [pokemonsPerPage, setPokemonPerPage] = useState(12)
+    const indiceUltimoPokemon = currentPage * pokemonsPerPage//12
+    const indicePrimerPokemon = indiceUltimoPokemon - pokemonsPerPage// 0
+    const pokemonsPaginaActual = allPokemons.slice(indicePrimerPokemon, indiceUltimoPokemon)
+
+
+    const paginado = (pageNumber)   => {
+        setCurrentPage(pageNumber)};
 
     useEffect(() => {
         dispatch(getPokemons());
@@ -38,8 +48,16 @@ export default function Home() {
                     <option value='DB'>Creados</option>
                     <option value='API'>Existentes</option>
                 </select>
+
+                <Paginado
+                pokemonsPerPage={pokemonsPerPage}
+                allPokemons={allPokemons.length}
+                paginado={paginado}
+                />
+
+
                 {
-                    allPokemons?.map(el => {
+                    pokemonsPaginaActual?.map(el => {
                         return (
                             <Fragment>
                                 <Link to = {"/home/" + el.id}>
