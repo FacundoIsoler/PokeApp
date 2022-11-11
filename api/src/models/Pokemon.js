@@ -27,7 +27,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
     },
     altura:{
-      type: DataTypes.FLOAT,
+      type: DataTypes.FLOAT,  
     },
     peso: {
       type: DataTypes.FLOAT,

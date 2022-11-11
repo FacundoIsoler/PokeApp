@@ -9,7 +9,7 @@ var types = [];
 
 module.exports = {
     obtenerPokemons: ()=> {
-    let pokemonPromesaApi = axios.get(' https://pokeapi.co/api/v2/pokemon?offset=60&limit=60');
+    let pokemonPromesaApi = axios.get(' https://pokeapi.co/api/v2/pokemon?offset=0&limit=151');
     let pokemonPromesaDb = Pokemon.findAll();
     Promise.all([pokemonPromesaApi, pokemonPromesaDb])
         .then((respuesta) => {

@@ -1,7 +1,7 @@
 import React, {Fragment, useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPokemons } from '../Actions/index.js';
+import { getPokemons, filtradoPokemonByStatus, filterCreados } from '../Actions/index.js';
 import { Link } from 'react-router-dom';
 
 import Card from './Card.jsx'
@@ -15,7 +15,7 @@ export default function Home() {
     const indiceUltimoPokemon = currentPage * pokemonsPerPage//12
     const indicePrimerPokemon = indiceUltimoPokemon - pokemonsPerPage// 0
     const pokemonsPaginaActual = allPokemons.slice(indicePrimerPokemon, indiceUltimoPokemon)
-
+    
 
     const paginado = (pageNumber)   => {
         setCurrentPage(pageNumber)};
@@ -31,6 +31,18 @@ export default function Home() {
         dispatch(getPokemons());
     }
 
+    function handleFiltradoStatus(e) {
+        e.preventDefault();
+        setCurrentPage(1);
+        dispatch(filtradoPokemonByStatus(e.target.value))
+    }
+
+
+    function handleFilterCreados(e){
+        e.preventDefault();;
+        dispatch(filterCreados(e.target.value))
+    }
+
     return (
         <div>
             <Link to='/pokemons'>Create Pokemon</Link>
@@ -43,19 +55,44 @@ export default function Home() {
                     <option value='asc'>Ascendente</option>
                     <option value='desc'>Descendente</option>
                 </select>
-                <select>
-                    <option value='all'>Todos</option>
+                <select onChange={e => handleFiltradoStatus(e)}>
+                    <option value="All">All</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Fighting">Fighting</option>
+                    <option value="Flying">Flying</option>
+                    <option value="Poison">Poison</option>
+                    <option value="Ground">Ground</option>
+                    <option value="Rock">Rock</option>
+                    <option value="Ghost">Ghost</option>
+                    <option value="Bug">Bug</option>
+                    <option value="Steel">Steel</option>
+                    <option value="Fire">Fire</option>
+                    <option value="Water">Water</option>
+                    <option value="Electric">Electric</option>
+                    <option value="Grass">Grass</option>
+                    <option value="Psychic">Psychic</option>
+                    <option value="Dragon">Dragon</option>
+                    <option value="Dark">Dark</option>
+                    <option value="Fairy">Fairy</option>
+                    <option value="Unknow">Unknow</option>
+                    <option value="Shadow">Shadow</option>
+                </select>
+                <select onChange={e=> handleFilterCreados(e)}>
+                    <option value='All'>Todos</option>
                     <option value='DB'>Creados</option>
                     <option value='API'>Existentes</option>
                 </select>
+                <br />
+                    <input type="text" />
+
+
 
                 <Paginado
                 pokemonsPerPage={pokemonsPerPage}
                 allPokemons={allPokemons.length}
                 paginado={paginado}
                 />
-
-
+                
                 {
                     pokemonsPaginaActual?.map(el => {
                         return (
@@ -67,14 +104,9 @@ export default function Home() {
                         )
                     })
                 }
+
+             
             </div>
         </div>
     )
 }
-// export default function lHome() {
-//     return (
-//         <div>
-//             <h1>Welcome to Home</h1>
-//         </div>
-//     )
-// }

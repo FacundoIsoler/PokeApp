@@ -11,7 +11,7 @@ let {
 const getApiInfo = async () => {
     try {
         const { results } = (
-            await axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=40")
+            await axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=151")
         ).data;
         const promisesArray = await Promise.all(
             results.map((p) => axios.get(p.url))
