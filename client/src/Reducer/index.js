@@ -1,9 +1,11 @@
+
 import { filtradoPokemonByStatus, filterCreados } from "../Actions";
 
 
 const initialState = {
-    pokemons: [],
-    allPokemons: []
+    pokemons: [], //provisorio que se modifica según caso 
+    allPokemons: [],// fijo que renderiza todos 
+    allTypes: [],
 }
 
 
@@ -14,22 +16,37 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 pokemons: action.payload,
-                allPokemons: action.payload
+                allPokemons: action.payload// duplicar estado para usar uno como provisorio
+            }
+        case 'ORDENAR_POR_NOMBRE':
+            let order = action.payload === 'asc' ?
+                state.pokemons.sort(function (a, b) {
+                    if (a.name > b.name) {
+                        return 1
+                    } if (a.name < b.name) {
+                        return -1
+                    } else return 0;
+                }) :
+                state.pokemons.sort(function (a, b) {
+                    if (a.name < b.name) {
+                        return 1
+                    } if (a.name > b.name) {
+                        return -1
+                    } return 0;
+                })
+            return {
+                ...state,
+                pokemons: order,
+            }
+        case 'GET_TYPES':
+
+            return {
+                ...state,
+                allTypes: action.payload
             }
         case 'FILTRADO_POR_VALUE':
             const allPokemons = state.allPokemons
             const statusFilter = action.payload === 'All' ? allPokemons : allPokemons.filter(el => el.types.includes(action.payload) === true)
-            // function filtradoFinal(statusFilter){
-            //     statusFilter.map(el =>{
-            //         return (
-            //             <Fragment>
-            //                 <Link to = {"/home/" + el.id}>
-            //                 <Card name={el.name} img={el.sprites} type={el.types} />
-            //                 </Link>
-            //             </Fragment>
-            //         )
-            // //     })
-            // }
             return {
                 ...state,
                 pokemons: statusFilter
@@ -40,6 +57,10 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 pokemons: creadosFilter
             }
+
+
+
+
 
         default:
             return state;

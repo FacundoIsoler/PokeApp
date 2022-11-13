@@ -39,7 +39,7 @@ const getApiInfo = async () => {
 };
 
 const getDbInfo = async () => {
-    return await Pokemon.findAll({
+    const pokeFiltro = await Pokemon.findAll({
         include: {
             model: Type,
             attributes: ['name'],
@@ -48,6 +48,24 @@ const getDbInfo = async () => {
             },
         }
     })
+    // console.log(pokeFiltro)
+    
+    pokeDB = pokeFiltro.map((poke) => {
+        return {
+          id: poke.id,
+          name: poke.name,
+          life: poke.life,
+          attack: poke.attack,
+          defence: poke.defence,
+          speed: poke.speed,
+          height: poke.height,
+          weight: poke.weight,
+          types: poke.types.map((t) => t.name),
+          sprites: poke.img,
+        };
+      });
+    //   console.log(pokeDB)
+      return pokeDB;
 }
 const getAllPokemons = async () => {
     const apiDepurada = await getApiInfo();
@@ -98,9 +116,9 @@ router.get('/:idPokemon', async (req, res) => {
                 return;
             }
         }else{
-            console.log("entró al else")
+            // console.log("entró al else")
             const {data} = await axios(`https://pokeapi.co/api/v2/pokemon/${idPokemon}`)
-            console.log(data)
+            // console.log(data)
                 const pokemonFinal = {
                     id: data.id,
                     name: data.name.charAt(0).toUpperCase() + data.name.substring(1),
@@ -129,17 +147,13 @@ router.get('/:idPokemon', async (req, res) => {
 
 router.post('/', async (req, res, next) => {
     try {
-        let  { name, vida, ataque, defensa, velocidad, altura, peso, type } = req.body
-        let  newPokemon = await Pokemon.create({ name, vida, ataque, defensa, velocidad, altura, peso })
-        
-        // let typeDb = await Type.findAll({
-        //     where: {name: type}
-        // })
-        // newPokemon.addType(typeDb)
-
-        const addTypes = await newPokemon.addType(type, {
-            through: null,
-          });
+        let  { name, life, attack, defence, speed, height, weight, types } = req.body
+    let  newPokemon = await Pokemon.create({ name, life, attack, defence, speed, height, weight })
+    for (const type of types) 
+        {
+            const [{dataValues: {name}}] = await Type.findAll({where:{name:type}}); 
+            await newPokemon.addType(name);
+        }
 
         res.status(200).json({msg: 'Pokemon created successfully', newPokemon})
     } catch (error) {

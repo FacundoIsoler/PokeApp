@@ -14,24 +14,28 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    vida: {
+    life: {
       type: DataTypes.INTEGER,
     },
-    ataque: {
+    attack: {
       type: DataTypes.INTEGER,
     },
-    defensa: {
+    defence: {
       type: DataTypes.INTEGER,
     },
-    velocidad: {
+    speed: {
       type: DataTypes.INTEGER,
     },
-    altura:{
+    height:{
       type: DataTypes.FLOAT,  
     },
-    peso: {
+    weight: {
       type: DataTypes.FLOAT,
-    }
+    },
+    img:{
+      type: DataTypes.TEXT,
+      defaultValue: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFn6bP6QWEoW0gr0L-Bmj-XxojojyezXIiNQ&usqp=CAU'
+    },
   });
   
 };
