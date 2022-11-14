@@ -12,10 +12,35 @@ export function getPokemons() {
         })
     }
 }
+export function quitarFiltros() {
+    return async function (dispatch) {
+        var json = await axios.get("http://localhost:3001/pokemons", {
+
+        });
+        return dispatch({
+            type: 'QUITAR_FILTROS',
+            payload: json.data
+        })
+    }
+}
+
+export function getNamePokemon(name) {
+    return async function (dispatch) {
+        try {
+            let json = await axios.get("http://localhost:3001/pokemons?name=" + name);
+            return dispatch({
+                type: 'GET_NAME_POKEMON',
+                payload: json.data// trae el personaje filtrado desde el back 
+            })
+        } catch (error) { 
+            console.log(error)
+        }
+    }
+}
 
 export function getTypes() {
     return async function (dispatch) {
-        var json = await axios.get("http://localhost:3001/types",{
+        var json = await axios.get("http://localhost:3001/types", {
 
         });
 
@@ -47,6 +72,13 @@ export function filterCreados(payload) {
 export function ordenarPorNombre(payload) {
     return {
         type: 'ORDENAR_POR_NOMBRE',
+        payload
+    }
+}
+
+export function ordenarPorAtaque(payload) {
+    return {
+        type: 'ORDENAR_POR_ATAQUE',
         payload
     }
 }

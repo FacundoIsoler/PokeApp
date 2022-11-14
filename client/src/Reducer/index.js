@@ -18,6 +18,15 @@ export default function rootReducer(state = initialState, action) {
                 pokemons: action.payload,
                 allPokemons: action.payload// duplicar estado para usar uno como provisorio
             }
+        case 'QUITAR_FILTROS':
+            return {
+                allPokemons
+            }
+            case 'GET_NAME_POKEMON':
+                return {
+                    ...state,
+                    pokemons: action.payload
+                };
         case 'ORDENAR_POR_NOMBRE':
             let order = action.payload === 'asc' ?
                 state.pokemons.sort(function (a, b) {
@@ -37,6 +46,25 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 pokemons: order,
+            }
+        case 'ORDENAR_POR_ATAQUE':
+            let ordenAtk = action.payload === 'atkAsc' ? state.pokemons.sort(function (a, b) {
+                if (a.attack > b.attack) {
+                    return 1
+                } if (a.attack < b.attack) {
+                    return -1
+                } else return 0;
+            }) :
+                state.pokemons.sort(function (a, b) {
+                    if (a.attack < b.attack) {
+                        return 1
+                    } if (a.attack > b.attack) {
+                        return -1
+                    } return 0;
+                })
+            return {
+                ...state,
+                pokemons: ordenAtk,
             }
         case 'GET_TYPES':
 

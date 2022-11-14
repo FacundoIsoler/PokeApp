@@ -1,11 +1,12 @@
 import React, { Fragment, useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPokemons, filtradoPokemonByStatus, filterCreados, getTypes, ordenarPorNombre } from '../Actions/index.js';
+import { getPokemons, filtradoPokemonByStatus, filterCreados, getTypes, ordenarPorNombre, ordenarPorAtaque } from '../Actions/index.js';
 import { Link } from 'react-router-dom';
 
 import Card from './Card.jsx'
 import Paginado from './Paginado.jsx';
+import SearchBar from './SearchBar.jsx';
 
 export default function Home() {
     const dispatch = useDispatch()
@@ -46,12 +47,19 @@ export default function Home() {
         dispatch(filterCreados(e.target.value))
     }
 
-    function handleOrdenarPorNobre(e) {
+    function handleOrdenarPorNombre(e) {
         e.preventDefault();
         dispatch(ordenarPorNombre(e.target.value))
         setCurrentPage(1);
         setOrden(`Ordenado ${e.target.value}`)
 
+    }
+
+    function handleOrdenarPorAtaque(e) { 
+        e.preventDefault();
+        dispatch(ordenarPorAtaque(e.target.value))
+        setCurrentPage(1);
+        setOrden(`Ordenado ${e.target.value}`)
     }
     // console.log(allTypes.map(e => e.name))
     return (
@@ -59,16 +67,19 @@ export default function Home() {
             <Link to='/pokemons'>Create Pokemon</Link>
             <h1>Estas en Home</h1>
             <button onClick={e => { handleClick(e) }}>
-                Volver a cargar todos los Pokemons
+                Quitar filtros
             </button>
             <div>
-                <select onChange={e => handleOrdenarPorNobre(e)}>
+                <select onChange={e => handleOrdenarPorNombre(e)}>
                     <option value='asc'>Ascendente</option>
                     <option value='desc'>Descendente</option>
                 </select>
 
+                <select onChange={e => handleOrdenarPorAtaque(e)}>
+                    <option value='atkAsc'>Ataque Ascendente</option>
+                    <option value='atkDesc'>Ataque Descendente</option>
+                </select>
 
-                {/* cambiar por un .map */}
                 <select name="selectType" id="selectType" onChange={e => handleFiltradoStatus(e)}>
                     <option value="All">All</option>
                     {allTypes.map(t =>
@@ -84,8 +95,7 @@ export default function Home() {
                     <option value='API'>Existentes</option>
                 </select>
                 <br />
-                <input type="text" />
-
+                <SearchBar/>
 
 
                 <Paginado

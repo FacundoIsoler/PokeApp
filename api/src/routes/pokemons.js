@@ -29,8 +29,8 @@ const getApiInfo = async () => {
                 weight: data.weight,
                 types: data.types.map((type) => { return type.type.name.charAt(0).toUpperCase() + type.type.name.substring(1) }),
                 sprites:
-                    data.sprites.other["dream_world"].front_default ||
-                    data.sprites.other["official-artwork"].front_default,
+                    data.sprites.other["official-artwork"].front_default ||
+                    data.sprites.other["dream_world"].front_default 
             };
         });
     } catch (e) {
