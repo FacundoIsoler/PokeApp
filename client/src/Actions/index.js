@@ -51,6 +51,15 @@ export function getTypes() {
     }
 }
 
+export function postPokemon(payload){
+    return async function(){
+        console.log (payload);
+        const rta = await axios.post("http://localhost:3001/pokemons", payload);
+       
+        return rta;
+    }
+}
+
 export function filtradoPokemonByStatus(payload) {
     // console.log(payload);
     return {

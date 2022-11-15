@@ -6,6 +6,7 @@ const initialState = {
     pokemons: [], //provisorio que se modifica según caso 
     allPokemons: [],// fijo que renderiza todos 
     allTypes: [],
+    loading: true,
 }
 
 
@@ -16,8 +17,14 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 pokemons: action.payload,
-                allPokemons: action.payload// duplicar estado para usar uno como provisorio
+                allPokemons: action.payload,// duplicar estado para usar uno como provisorio
+                loading: false,
             }
+        case 'POST_POKEMON':
+            return {
+                ...state,   
+            }
+
         case 'QUITAR_FILTROS':
             return {
                 allPokemons
