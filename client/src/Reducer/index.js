@@ -7,6 +7,7 @@ const initialState = {
     allPokemons: [],// fijo que renderiza todos 
     allTypes: [],
     loading: true,
+    details: []
 }
 
 
@@ -22,18 +23,26 @@ export default function rootReducer(state = initialState, action) {
             }
         case 'POST_POKEMON':
             return {
-                ...state,   
+                ...state,
+            }
+
+
+        case "GET_DETAILS":
+            // console.log(action.payload)
+            return {
+                ...state,
+                details: action.payload
             }
 
         case 'QUITAR_FILTROS':
             return {
                 allPokemons
             }
-            case 'GET_NAME_POKEMON':
-                return {
-                    ...state,
-                    pokemons: action.payload
-                };
+        case 'GET_NAME_POKEMON':
+            return {
+                ...state,
+                pokemons: action.payload
+            };
         case 'ORDENAR_POR_NOMBRE':
             let order = action.payload === 'asc' ?
                 state.pokemons.sort(function (a, b) {

@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+
+
+
+.LandingPage {
+    background-color: transparent;
+    background-image: url(./../Fotos\ para\ proyecto/Welcome.png);
+    background-repeat: no-repeat;
+    background-position: top;
+    
+    height: 100%;
+
+}
+
+.Welcome {
+    color: yellow;
+    font-family: 'Pokemon Solid';
+    font-size: 4rem;
+    display: swap;
+    margin-bottom: 0cm;
+
+
+}
+
+.Push {
+    position: relative;
+    right: 1.5rem;
+    top: 10rem;
+    font-size: 1rem;
+    margin-top: 0;
+}
+
+.Foto {
+    background-image: url(./../Fotos\ para\ proyecto/Pokeball_LandingPage.png);
+    /* transform: rotate(18deg); */
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    top: 10rem;
+    height: 65vh;
+    width: 95vw;
+
+}
+
+.boton {
+    background-color: transparent;
+    transform: rotate(-18deg);
+    width: 6.2rem;
+    height: 6.2rem;
+    border-radius: 50%;
+    position: relative;
+    top: 12rem;
+    right: -1.5rem;
+    border-color: transparent;
+
+}
+
+.boton:hover {
+    background-color: rgb(254, 38, 38);
+}

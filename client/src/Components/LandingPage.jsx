@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import s from '../Stylos/LandingPage.module.css'
 
 
 
@@ -7,11 +8,15 @@ import { Link } from 'react-router-dom';
 
 export default function landingPage() {
     return (
-        <div>
-            <h1>Welcome to Pokemons World</h1>
+    
+        <div className={s.LandingPage}>
+            <h1 className={s.Welcome}></h1>
+            <h2 className={s.Push}>Please push the pokeball center</h2>
+            <div className={s.Foto}> 
             <Link to='/home'>
-                <button>Get in</button>
+                <button className={s.boton}></button>
             </Link>
+            </div>
         </div>
     )
 }

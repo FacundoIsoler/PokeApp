@@ -11,7 +11,7 @@ let {
 const getApiInfo = async () => {
     try {
         const { results } = (
-            await axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=151")
+            await axios.get("https://pokeapi.co/api/v2/pokemon?offset=0&limit=40")
         ).data;
         const promisesArray = await Promise.all(
             results.map((p) => axios.get(p.url))
@@ -56,7 +56,7 @@ const getDbInfo = async () => {
           name: poke.name,
           life: poke.life,
           attack: poke.attack,
-          defence: poke.defence,
+          defense: poke.defense,
           speed: poke.speed,
           height: poke.height,
           weight: poke.weight,
@@ -147,8 +147,8 @@ router.get('/:idPokemon', async (req, res) => {
 
 router.post('/', async (req, res, next) => {
     try {
-        let  { name, life, attack, defence, speed, height, weight, types } = req.body
-    let  newPokemon = await Pokemon.create({ name, life, attack, defence, speed, height, weight })
+        let  { name, life, attack, defense, speed, height, weight, types, img } = req.body
+    let  newPokemon = await Pokemon.create({ name, life, attack, defense, speed, height, weight })
     for (const type of types) 
         {
             const [{dataValues: {name}}] = await Type.findAll({where:{name:type}}); 

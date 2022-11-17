@@ -1,29 +1,29 @@
-const { json } = require("express");
-const {axios} = require("axios");
-const { Pokemon, Type } = require('./../db')
+// const { json } = require("express");
+// const {axios} = require("axios");
+// const { Pokemon, Type } = require('./../db')
 
-var pokemons = [];
+// var pokemons = [];
 
-var types = [];
+// var types = [];
 
 
-module.exports = {
-    obtenerPokemons: ()=> {
-    let pokemonPromesaApi = axios.get(' https://pokeapi.co/api/v2/pokemon?offset=0&limit=151');
-    let pokemonPromesaDb = Pokemon.findAll();
-    Promise.all([pokemonPromesaApi, pokemonPromesaDb])
-        .then((respuesta) => {
-            const [pokemonApi, pokemonDb] = respuesta;
-            let mapeoApi = pokemonApi.data.results.map((pokemon) => {
-                return {
-                    name: pokemon.name,
-                    url: pokemon.url
-                }
-            })
-            let todosLosPokemons = [...mapeoApi, ...pokemonDb];
-            return todosLosPokemons;
-        });
-    }
+// module.exports = {
+//     obtenerPokemons: ()=> {
+//     let pokemonPromesaApi = axios.get(' https://pokeapi.co/api/v2/pokemon?offset=0&limit=151');
+//     let pokemonPromesaDb = Pokemon.findAll();
+//     Promise.all([pokemonPromesaApi, pokemonPromesaDb])
+//         .then((respuesta) => {
+//             const [pokemonApi, pokemonDb] = respuesta;
+//             let mapeoApi = pokemonApi.data.results.map((pokemon) => {
+//                 return {
+//                     name: pokemon.name,
+//                     url: pokemon.url
+//                 }
+//             })
+//             let todosLosPokemons = [...mapeoApi, ...pokemonDb];
+//             return todosLosPokemons;
+//         });
+//     }
 // listPokemons: function (namePokemon, shiny){
     
 //     let pokemonPromesaApi = axios.get(' https://pokeapi.co/api/v2/pokemon?offset=60&limit=60');
@@ -71,4 +71,4 @@ module.exports = {
 //         })
 //         return final;
 //     }
-}
+// }

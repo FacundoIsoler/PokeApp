@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Card from './Card.jsx'
 import Paginado from './Paginado.jsx';
 import SearchBar from './SearchBar.jsx';
+import Loading from './Loading.jsx';
 
 export default function Home() {
     const dispatch = useDispatch()
@@ -125,7 +126,7 @@ export default function Home() {
                         </div>
                     </div>
                     :
-                    "prueba"//editar componente loading
+                    <Loading/>
             }
         </div>
     )

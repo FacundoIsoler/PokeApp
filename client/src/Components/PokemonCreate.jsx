@@ -4,18 +4,26 @@ import { getTypes, postPokemon } from '../Actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 
+function controladora(input) {
+    let errors = {};
+    if (!input.name){
+        errors.name = 'Se requiere un nombre'
+    } else if (!input.life || input.attack || input.defense || input.speed || input.height || input.weight) { errors.attack= 'Debe rellenar todos los campos'}
 
+    return errors
+}
 
 
 const PokemonCreate = () => {
     let dispatch = useDispatch();
     const history = useHistory();
     const types = useSelector((state) => state.allTypes)
+    const [errors, setErrors] = useState({});
     const [input, setInput] = useState({
         name: "",
         life: "",
         attack: "",
-        defence: "",
+        defense: "",
         speed: "",
         height: "",
         weight: "",
@@ -28,6 +36,10 @@ const PokemonCreate = () => {
             ...input,
             [e.target.name]: e.target.value
         })
+        setErrors(controladora({
+            ...input,
+            [e.target.name]: e.target.value
+        }))
         console.log(input)
     }
 
@@ -46,13 +58,20 @@ const PokemonCreate = () => {
             name: "",
         life: "",
         attack: "",
-        defence: "",
+        defense: "",
         speed: "",
         height: "",
         weight: "",
         types: []
         });
         history.push('/home')
+    }
+
+    function handleDelete(el) {
+        setInput({
+            ...input,
+            types: input.types.filter(ty => ty !== el)
+        })
     }
 
     useEffect(() => {
@@ -69,6 +88,9 @@ const PokemonCreate = () => {
                 <div>
                     <label>Nombre: </label>
                     <input type="text" value={input.name} name="name" onChange={(e)=>handleChange(e)}/>
+                    {errors.name && (
+                        <p className='error'>{errors.name}</p>
+                    )}
                 </div>
                 <div>
                     <label>Life: </label>
@@ -79,8 +101,8 @@ const PokemonCreate = () => {
                     <input type="integer" value={input.attack} name="attack" onChange={(e)=>handleChange(e)}/>
                 </div>
                 <div>
-                    <label>Defence: </label>
-                    <input type="integer" value={input.defence} name="defence" onChange={(e)=>handleChange(e)}/>
+                    <label>Defense: </label>
+                    <input type="integer" value={input.defense} name="defense" onChange={(e)=>handleChange(e)}/>
                 </div>
                 <div>
                     <label>Speed: </label>
@@ -100,8 +122,15 @@ const PokemonCreate = () => {
                     ))}
                 </select>
                 <ul><li>{input.types.map(el =>  el + " ")}</li></ul>
+                <br />
                 <button type='submit' >Pokemon create</button>
             </form>
+            {input.types.map(el => 
+            <div className='divTy'>
+                <p>{el}</p>
+                <button className='buttonX' onClick={()=>handleDelete(el)}>X</button>
+            </div>
+            )}
         </div>
     )
 }

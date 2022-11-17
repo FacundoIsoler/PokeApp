@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    defence: {
+    defense: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -40,7 +40,7 @@ module.exports = (sequelize) => {
     },
     img:{
       type: DataTypes.TEXT,
-      defaultValue: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFn6bP6QWEoW0gr0L-Bmj-XxojojyezXIiNQ&usqp=CAU'
+      defaultValue: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSC2CjcPPIQfmGkK-W6NIK2JwzjnUpQQ3OKwP9FI8f9dTYSRp5eOL8PipNbD7ZfTuCH5dg&usqp=CAU'
     },
   });
   
