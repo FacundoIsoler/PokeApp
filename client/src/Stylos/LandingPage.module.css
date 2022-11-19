@@ -17,18 +17,18 @@
 .Welcome {
     color: yellow;
     font-family: 'Pokemon Solid';
-    font-size: 4rem;
+    font-size: 4em;
     display: swap;
-    margin-bottom: 0cm;
+    margin-bottom: 0em;
 
 
 }
 
 .Push {
     position: relative;
-    right: 1.5rem;
-    top: 10rem;
-    font-size: 1rem;
+    right: 1.5em;
+    top: 10em;
+    font-size: 1em;
     margin-top: 0;
 }
 
@@ -38,22 +38,23 @@
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
-    top: 10rem;
+    top: 10em;
     height: 65vh;
     width: 95vw;
 
 }
 
 .boton {
-    background-color: transparent;
+    background-color: rgb(66, 64, 64);
     transform: rotate(-18deg);
-    width: 6.2rem;
-    height: 6.2rem;
+    width: 6.2em;
+    height: 6.2em;
     border-radius: 50%;
     position: relative;
-    top: 12rem;
-    right: -1.5rem;
+    top: 13.6em;
+    right: -1.8em;
     border-color: transparent;
+     
 
 }
 

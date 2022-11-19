@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { getNamePokemon } from '../Actions';
+import s from '../Stylos/SearchBar.module.css'
 
 export default function SearchBar() {
     const dispatch = useDispatch()
@@ -22,9 +23,9 @@ export default function SearchBar() {
     }
 
     return (
-        < div >
-            <input type="text" placeholder='Buscar pokemon' onChange={(e) => handleInputName(e)} value={name} />
-            <button type='submit' onClick={(e) => handleSubmitName(e)}>Buscar</button>
+        < div className={s.SearchBar} >
+            <input type="text" placeholder='Search pokemon' onChange={(e) => handleInputName(e)} value={name} className={s.PlaceHolder}/>
+            <button type='submit' onClick={(e) => handleSubmitName(e)} className={s.Boton}>Search</button>
         </div >
     )
 }

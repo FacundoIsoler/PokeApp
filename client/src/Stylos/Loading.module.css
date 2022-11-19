@@ -1,16 +1,17 @@
 .Page{
     background-image: url(./../Fotos\ para\ proyecto/Pokeball_Loading.gif);
-    height:96vh ;
-    width: 98vw;
+    width: 101em;
+    height: 45em;
     background-repeat:no-repeat;
     background-position: center;
-    margin: 1rem;
-    padding: 1rem;
+    margin: 1em;
+    padding: 1em;
+    border: .0625em solid black;
 
 }
 
 .Loading{
     position: center;
-    margin-top: 10rem;
+    margin-top: 6em;
 }
 

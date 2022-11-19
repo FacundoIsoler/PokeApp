@@ -8,6 +8,7 @@ import Card from './Card.jsx'
 import Paginado from './Paginado.jsx';
 import SearchBar from './SearchBar.jsx';
 import Loading from './Loading.jsx';
+import s from '../Stylos/Home.module.css'
 
 export default function Home() {
     const dispatch = useDispatch()
@@ -65,25 +66,28 @@ export default function Home() {
     }
     // console.log(allTypes.map(e => e.name))
     return (
-        <div>
+        <div >
             {
                 !loading
                     ?
-                    <div>
+                    
+                    <div className={s.Todo}>
+                        <div className={s.ImagenWelcome}></div>
+                        <div className={s.Create}>
                         <Link to='/pokemons'>Create your pokemon</Link>
-                        <h1>Estas en Home</h1>
-                        <button onClick={e => { handleClick(e) }}>
-                            Quitar filtros
+                        </div>
+                        <button onClick={e => { handleClick(e) }} className={s.QuitarFiltros}>
+                            Remove filters
                         </button>
                         <div>
                             <select onChange={e => handleOrdenarPorNombre(e)}>
-                                <option value='asc'>Ascendente</option>
-                                <option value='desc'>Descendente</option>
+                                <option value='asc'>A to Z</option>
+                                <option value='desc'>Z to A</option>
                             </select>
 
                             <select onChange={e => handleOrdenarPorAtaque(e)}>
-                                <option value='atkAsc'>Ataque Ascendente</option>
-                                <option value='atkDesc'>Ataque Descendente</option>
+                                <option value='atkAsc'>Attack Asc</option>
+                                <option value='atkDesc'>Attack Desc</option>
                             </select>
 
                             <select name="selectType" id="selectType" onChange={e => handleFiltradoStatus(e)}>
@@ -109,7 +113,7 @@ export default function Home() {
                                 allPokemons={allPokemons.length}
                                 paginado={paginado}
                             />
-
+                            <div className={s.Cards}>
                             {
                                 pokemonsPaginaActual?.map(el => {
                                     return (
@@ -121,12 +125,18 @@ export default function Home() {
                                     )
                                 })
                             }
+                            </div>
+                            <Paginado
+                                pokemonsPerPage={pokemonsPerPage}
+                                allPokemons={allPokemons.length}
+                                paginado={paginado}
+                            />
 
 
                         </div>
                     </div>
                     :
-                    <Loading/>
+                    <Loading />
             }
         </div>
     )

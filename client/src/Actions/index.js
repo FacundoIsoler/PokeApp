@@ -27,13 +27,15 @@ export function quitarFiltros() {
 export function getNamePokemon(name) {
     return async function (dispatch) {
         try {
-            let json = await axios.get("http://localhost:3001/pokemons?name=" + name);
+            let json = await axios.get("http://localhost:3001/pokemons?name=" + name) 
             return dispatch({
                 type: 'GET_NAME_POKEMON',
                 payload: json.data// trae el personaje filtrado desde el back 
-            })
+                               
+            }) 
         } catch (error) { 
-            console.log(error)
+            
+            return(alert("You haven't catch that pokemon"),error)
         }
     }
 }

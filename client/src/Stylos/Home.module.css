@@ -1,0 +1,59 @@
+.Todo{
+    /* border: .0625em solid red; */
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background:radial-gradient(110em,gray, black);
+    padding: 0%;
+    margin: 0%;
+    text-decoration: none;
+  
+}
+
+.ImagenWelcome{
+    /* border: .0625em solid red; */
+    position: relative;
+    height: 10em;
+    background-image: url(./../Fotos\ para\ proyecto/Welcome_Pokedex.png);
+    background-repeat: no-repeat;
+    background-position: top;
+}
+
+.Create{
+    /* border: .0625em solid blue; */
+    background:radial-gradient(110em,gray, black);
+    position: relative;
+    margin: 1em;
+    font-size: 1em, white   ;
+    width: 20%;
+    height: 2em;
+    text-align: center;
+    left: 39%;
+}
+
+a:link{
+    text-decoration: none !important;    
+}/*Hipervinculo */
+
+
+
+.QuitarFiltros{
+    /* border: .0625em solid rosybrown; */
+
+    position: center;
+}
+
+.Cards{
+    /* border: .0625em solid black; */
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+    margin-left: 4em;
+    padding: 3em;
+    position: relative;
+    width: 85%;
+    height: 100%;
+    text-decoration: none;
+
+    cursor: url(../Fotos\ para\ proyecto/Pokeball_LandingPage.png);
+    /* left: 5.5em; */
+}
