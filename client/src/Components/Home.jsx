@@ -101,8 +101,8 @@ export default function Home() {
 
                             <select onChange={e => handleFilterCreados(e)}>
                                 <option value='All'>All</option>
-                                <option value='DB'>Creados</option>
-                                <option value='API'>Existentes</option>
+                                <option value='DB'>Created</option>
+                                <option value='API'>Existing</option>
                             </select>
                             <br />
                             <SearchBar />

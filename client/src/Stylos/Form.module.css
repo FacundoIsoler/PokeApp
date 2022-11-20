@@ -1,0 +1,71 @@
+.Form{
+    border: .0625em solid red;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    position: center;
+    background:radial-gradient(110em,gray, black);
+    height: 97vh;
+    width: 213.5vh;
+
+}
+
+.Form label{
+   position: relative;
+   left: -2em;
+}
+
+.Form input{
+    /* background-color: black; */
+    display: flex;
+    align-items: flex-end;
+    left: 10em;
+}
+
+.InputObligated {
+    border-color: red;
+}
+
+.InputAllowed {
+    border-color: green;
+}
+
+/* .Nombre{
+    border: .0625em solid black;
+}
+
+.Vida{ */
+    /* border: .0625em solid black; */
+    /* padding-right: 2em; */
+  
+/* }
+
+#life{
+    background-color:  red;
+}
+
+.Ataque{
+    border: .0625em solid black;
+
+}
+
+.Defensa{
+    border: .0625em solid black;
+
+
+}
+
+.Velocidad{
+    border: .0625em solid black;
+   
+}
+
+.Altura{
+    border: .0625em solid black;
+
+}
+
+.Peso{
+    border: .0625em solid black;
+
+} */

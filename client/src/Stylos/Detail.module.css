@@ -42,13 +42,13 @@
 
 .ImagenPoke{
     margin: 0em;
-    height: 10.625em;
+    height: 7em;
     /* height: 40%; */
     width: 20%;
     position: relative;
     display: flex;
-    right: -5em;
-    top: 1.5em;
+    right: -5.7em;
+    top: 2.5em;
     
     /* border: 1px solid rosybrown */
 }

@@ -106,9 +106,9 @@ router.get('/:idPokemon', async (req, res) => {
     const { idPokemon } = req.params;
      console.log(typeof idPokemon)
     try {
-        console.log("estamos en el try")
+        // console.log("estamos en el try")
         if(isNaN(Number(idPokemon))) {
-            console.log("entró al if")
+            // console.log("entró al if")
             const dataDB = await Pokemon.findByPk(idPokemon, { include: Type });
             if (dataDB) {
                 res.status(200).json(dataDB);
@@ -133,7 +133,7 @@ router.get('/:idPokemon', async (req, res) => {
                          data.sprites.other["dream_world"].front_default ||
                          data.sprites.other["official-artwork"].front_default,
                 };
-                console.log("entraste a la data")
+                // console.log("entraste a la data")
             res.status(200).send(pokemonFinal);
         }
         
