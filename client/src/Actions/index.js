@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export function getPokemons() {
     return async function (dispatch) {
-        var json = await axios.get("http://localhost:3001/pokemons", {
+        var json = await axios.get("/pokemons", {
 
         });
         return dispatch({
@@ -14,7 +14,7 @@ export function getPokemons() {
 }
 export function quitarFiltros() {
     return async function (dispatch) {
-        var json = await axios.get("http://localhost:3001/pokemons", {
+        var json = await axios.get("/pokemons", {
 
         });
         return dispatch({
@@ -27,7 +27,7 @@ export function quitarFiltros() {
 export function getNamePokemon(name) {
     return async function (dispatch) {
         try {
-            let json = await axios.get("http://localhost:3001/pokemons?name=" + name)
+            let json = await axios.get("/pokemons?name=" + name)
             return dispatch({
                 type: 'GET_NAME_POKEMON',
                 payload: json.data// trae el personaje filtrado desde el back 
@@ -42,7 +42,7 @@ export function getNamePokemon(name) {
 
 export function getTypes() {
     return async function (dispatch) {
-        var json = await axios.get("http://localhost:3001/types", {
+        var json = await axios.get("/types", {
 
         });
 
@@ -56,7 +56,7 @@ export function getTypes() {
 export function postPokemon(payload) {
     return async function () {
         // console.log (payload);
-        const rta = await axios.post("http://localhost:3001/pokemons", payload);
+        const rta = await axios.post("/pokemons", payload);
 
         return rta;
     }
@@ -97,7 +97,7 @@ export function ordenarPorAtaque(payload) {
 export function getDetail(id) {
     return async function (dispatch) {
         try {
-            var json = await axios.get("http://localhost:3001/pokemons/"
+            var json = await axios.get("/pokemons/"
                 + id);
             return dispatch({
                 type: "GET_DETAILS",
