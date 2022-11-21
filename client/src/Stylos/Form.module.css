@@ -7,6 +7,7 @@
     background:radial-gradient(110em,gray, black);
     height: 97vh;
     width: 213.5vh;
+    
 
 }
 
@@ -20,6 +21,7 @@
     display: flex;
     align-items: flex-end;
     left: 10em;
+
 }
 
 .InputObligated {
@@ -29,43 +31,30 @@
 .InputAllowed {
     border-color: green;
 }
-
-/* .Nombre{
-    border: .0625em solid black;
+.Nombre{
+    height: 4em;
 }
 
-.Vida{ */
-    /* border: .0625em solid black; */
-    /* padding-right: 2em; */
-  
-/* }
-
-#life{
-    background-color:  red;
+.Vida{
+    height: 4em;
 }
 
 .Ataque{
-    border: .0625em solid black;
-
+    height: 4em;
 }
 
 .Defensa{
-    border: .0625em solid black;
-
-
+    height: 4em;
 }
 
 .Velocidad{
-    border: .0625em solid black;
-   
+    height: 4em;
 }
 
 .Altura{
-    border: .0625em solid black;
-
+    height: 4em;
 }
 
 .Peso{
-    border: .0625em solid black;
-
-} */
+    height: 4em;
+}
