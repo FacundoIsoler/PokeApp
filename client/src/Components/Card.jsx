@@ -2,7 +2,9 @@ import React from 'react';
 import s from '../Stylos/Card.module.css'
 
 
-export default function Card ({name, img, type}) {
+
+
+export default function Card ({name, img, type, id}) {
     return (
         <div className={s.Card}>
             <h3 className={s.Nombre}>{name}</h3>

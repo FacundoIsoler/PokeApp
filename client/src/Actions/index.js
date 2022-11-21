@@ -27,15 +27,15 @@ export function quitarFiltros() {
 export function getNamePokemon(name) {
     return async function (dispatch) {
         try {
-            let json = await axios.get("http://localhost:3001/pokemons?name=" + name) 
+            let json = await axios.get("http://localhost:3001/pokemons?name=" + name)
             return dispatch({
                 type: 'GET_NAME_POKEMON',
                 payload: json.data// trae el personaje filtrado desde el back 
-                               
-            }) 
-        } catch (error) { 
-            
-            return(alert("You haven't catch that pokemon"),error)
+
+            })
+        } catch (error) {
+
+            return (alert("You haven't catch that pokemon"), error)
         }
     }
 }
@@ -53,11 +53,11 @@ export function getTypes() {
     }
 }
 
-export function postPokemon(payload){
-    return async function(){
+export function postPokemon(payload) {
+    return async function () {
         // console.log (payload);
         const rta = await axios.post("http://localhost:3001/pokemons", payload);
-       
+
         return rta;
     }
 }
@@ -94,17 +94,17 @@ export function ordenarPorAtaque(payload) {
     }
 }
 
-export function getDetail(id){
-    return async function (dispatch){
-    try{
-    var json = await axios.get("http://localhost:3001/pokemons/"
-    + id);
-    return dispatch({
-    type: "GET_DETAILS",
-    payload:json.data
-    })
-    } catch (error){
-    console.log(error)
+export function getDetail(id) {
+    return async function (dispatch) {
+        try {
+            var json = await axios.get("http://localhost:3001/pokemons/"
+                + id);
+            return dispatch({
+                type: "GET_DETAILS",
+                payload: json.data
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
-    }
-    }
+}

@@ -12,7 +12,8 @@ const pokemon = {
   defense: "10",
   speed: "01",
   height: "01",
-  weight: "10"
+  weight: "10",
+  types: [Unknow]
 };
 
 describe('Pokemon routes', () => {

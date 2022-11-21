@@ -165,8 +165,17 @@ router.put('/', (req, res, next) => {
     res.send('soy put /pokemons');
 });
 
-router.delete('/', (req, res, next) => {
-    res.send('soy delete /pokemons');
+router.delete('/', async (req, res, next) => {
+
+    try {
+
+        res.status(200).send('Pokemon destroyed');
+    } catch (error) {
+        res.status(404).send("Pokemon doesn't exist");
+         
+    }
+
+    
 });
 
 
