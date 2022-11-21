@@ -7,6 +7,7 @@ const initialState = {
 }
 
 
+//comentario deploy
 
 export default function rootReducer(state = initialState, action) {
     switch (action.type) {
