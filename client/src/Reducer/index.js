@@ -31,11 +31,7 @@ export default function rootReducer(state = initialState, action) {
                 details: action.payload
             }
 
-        case 'QUITAR_FILTROS':
-            return {
-                ...state,
-                allPokemons
-            }
+
         case 'GET_NAME_POKEMON':
             return {
                 ...state,
@@ -100,7 +96,11 @@ export default function rootReducer(state = initialState, action) {
                 pokemons: creadosFilter
             }
 
-
+        case 'QUITAR_FILTROS':
+            return {
+                ...state,
+                pokemons: allPokemons
+            }
 
 
 
