@@ -21,11 +21,11 @@ export default function Detail(props) {
         <div className={s.Page}>
             {
           
-                props.match.params.id == myPokemon.id ?
+                props.match.params.id === myPokemon.id ?
                     <div className={s.Pokedex}>
                         <h1 className={s.Nombre}> {myPokemon.name} </h1>
                         <div className={s.ImagenPoke}>
-                            <img src={myPokemon.img ? myPokemon.img : myPokemon.sprites}/>
+                            <img src={myPokemon.img ? myPokemon.img : myPokemon.sprites} alt="Imagen Poke id"/>
                         </div>
                         <div className={s.Detalle}>
                             <p>Life: {myPokemon.life}</p>

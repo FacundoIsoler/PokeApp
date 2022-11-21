@@ -23,6 +23,16 @@ export default function Home() {
     const pokemonsPaginaActual = allPokemons.slice(indicePrimerPokemon, indiceUltimoPokemon)
 
 
+    console.log(orden);
+
+    const estadoLocalVacío= ()=>
+    {setPokemonPerPage()};
+
+    console.log(estadoLocalVacío);
+    
+    
+
+
     const paginado = (pageNumber) => {
         setCurrentPage(pageNumber)
     };
