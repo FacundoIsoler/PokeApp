@@ -10,7 +10,7 @@ export default function landingPage() {
     return (
     
         <div className={s.LandingPage}>
-            <h1 className={s.Welcome}></h1>
+            <div className={s.Welcome}></div>
             <h2 className={s.Push}>Please push the pokeball center</h2>
             <div className={s.Foto}> 
             <Link to='/home'>

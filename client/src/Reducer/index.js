@@ -7,7 +7,7 @@ const initialState = {
 }
 
 
-//comentario deploy
+
 
 export default function rootReducer(state = initialState, action) {
     switch (action.type) {
@@ -33,6 +33,7 @@ export default function rootReducer(state = initialState, action) {
 
         case 'QUITAR_FILTROS':
             return {
+                ...state,
                 allPokemons
             }
         case 'GET_NAME_POKEMON':
