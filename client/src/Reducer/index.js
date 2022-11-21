@@ -1,7 +1,3 @@
-
-import { filtradoPokemonByStatus, filterCreados } from "../Actions";
-
-
 const initialState = {
     pokemons: [], //provisorio que se modifica según caso 
     allPokemons: [],// fijo que renderiza todos 

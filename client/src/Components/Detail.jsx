@@ -21,7 +21,7 @@ export default function Detail(props) {
         <div className={s.Page}>
             {
           
-                props.match.params.id == myPokemon.id ?
+                props.match.params.id === String(myPokemon.id) ?
                     <div className={s.Pokedex}>
                         <h1 className={s.Nombre}> {myPokemon.name} </h1>
                         <div className={s.ImagenPoke}>
@@ -36,7 +36,8 @@ export default function Detail(props) {
                             <p>Weight: {myPokemon.weight}</p>
                             <p>Types: {myPokemon.id <40? myPokemon.types.map((ty) => ty + ' '): myPokemon.types.map((ty) => ty.name + ' ')}</p>
                         </div>
-                    </div> : <Loading/>
+                    </div> 
+                    : <Loading/>
             }
             <Link to={'/home'} className={s.Volver}>Home</Link>
         </div>

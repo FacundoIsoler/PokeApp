@@ -40,7 +40,7 @@ export default function Home() {
     useEffect(() => {
         dispatch(getPokemons());
         dispatch(getTypes());
-    }, [])
+    }, [dispatch])
 
     function handleClick(e) {
         e.preventDefault();

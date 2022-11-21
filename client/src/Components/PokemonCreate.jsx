@@ -111,7 +111,7 @@ const PokemonCreate = () => {
 
     useEffect(() => {
         dispatch(getTypes());
-    }, []);
+    }, [dispatch]);
 
 console.log(input.life)
     return (
