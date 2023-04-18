@@ -1,15 +1,16 @@
-.Card{
+/* Default styles */
+.Card {
     /* border: .0625em solid red; */
     position: relative;
     width: 90%;
     padding-top: .0625em;
     margin-top: 3em;
-    background:radial-gradient(50em,gray, black);
+    background: radial-gradient(50em, gray, black);
     text-decoration: none;
-  
+
 }
 
-.Nombre{
+.Nombre {
     /* border: .0625em solid yellow; */
     position: relative;
     width: 8em;
@@ -17,23 +18,76 @@
 
 }
 
-.Tipo{
+.Tipo {
     /* border: .0625em solid black;  */
     position: relative;
     width: 8em;
     margin-left: 30%;
     font-size: 1em;
     text-decoration: none;
-    
+
 }
 
-.Imagen{
+.Imagen {
     /* border: .0625em solid blue; */
     height: 70%;
-    width: 70%; 
+    width: 70%;
 
 }
 
-a{
+a {
     color: white;
+}
+
+/* Media queries for responsive layout */
+@media screen and (max-width: 768px) {
+
+    /* Adjust styles for smaller screens */
+    .Card {
+        width: 100%;
+        margin-top: 2em;
+    }
+
+    .Nombre {
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .Tipo {
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .Imagen {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+    /* Adjust styles for larger screens */
+    .Card {
+        width: 70%;
+        margin-top: 5em;
+    }
+
+    .Nombre {
+        width: 15em;
+        margin-left: 25%;
+        text-align: left;
+    }
+
+    .Tipo {
+        width: 15em;
+        margin-left: 25%;
+        text-align: left;
+    }
+
+    .Imagen {
+        width: 50%;
+        height: auto;
+    }
 }
