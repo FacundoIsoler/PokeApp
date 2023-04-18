@@ -1,17 +1,18 @@
 import React from "react";
 import s from '../Stylos/Paginado.module.css'
 
-function nextPrevButton (){
+
+// function nextPrevButton (){
     
-}
+// }
 
 
-function handleOrdenarPorAtaque(e) {
-    e.preventDefault();
-    dispatch(ordenarPorAtaque(e.target.value))
-    setCurrentPage(1);
-    setOrden(`Ordenado ${e.target.value}`)
-}
+// function handleOrdenarPorAtaque(e) {
+//     e.preventDefault();
+//     dispatch(ordenarPorAtaque(e.target.value))
+//     setCurrentPage(1);
+//     setOrden(`Ordenado ${e.target.value}`)
+// }
 
 export default function Paginado({ pokemonsPerPage, allPokemons, paginado }) {
     const pageNumber = [];
