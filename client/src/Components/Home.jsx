@@ -129,7 +129,7 @@ export default function Home() {
                                     return (
                                         <Fragment>
                                             <Link to={"/home/" + el.id}>
-                                                <Card name={el.name} img={el.sprites} type={el.types} />
+                                                <Card name={el.name} img={el.sprites} type={el.types} life={el.life} />
                                             </Link>
                                         </Fragment>
                                     )
@@ -151,6 +151,3 @@ export default function Home() {
         </div>
     )
 }
-
-
-//deploy
