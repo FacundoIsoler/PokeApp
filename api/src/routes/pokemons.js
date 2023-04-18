@@ -16,8 +16,8 @@ const getApiInfo = async () => {
         const promisesArray = await Promise.all(
             results.map((p) => axios.get(p.url))
         );
-
         return promisesArray.map(({ data }) => {
+            console.log(data)
             return {
                 id: data.id,
                 name: data.name.charAt(0).toUpperCase() + data.name.substring(1),
@@ -71,6 +71,7 @@ const getAllPokemons = async () => {
     const apiDepurada = await getApiInfo();
     const dbDepurada = await getDbInfo();
     const allPokemons = apiDepurada.concat(dbDepurada);
+    console.log("allPokemons")
     return allPokemons;
 };
 
